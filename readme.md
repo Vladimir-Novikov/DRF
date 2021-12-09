@@ -10,3 +10,11 @@
 * djangorestframework==3.12.4
 * VSCode
 * SQLite3
+
+
+Для выполнения процедуры создания базы данных и наполнения тестовыми данными необходимо выполнить следующую команду:
+
+```sh
+python manage.py fill_db        # Для Windows
+python3 manage.py fill_db       # Для Mac OS / Linux
+```
