@@ -1,4 +1,4 @@
-# Веб-сайт для работы с TODO-заметками»
+# Веб-сайт для работы с TODO-заметками
 
 
 Разработан в рамках прохождения факультета Python-разработки, портал GeekBrains, на курсе `Django REST framework`.
@@ -8,6 +8,8 @@
 * Python==3.9
 * Django==4.0
 * djangorestframework==3.12.4
+* nodejs==16.13 LTS
+* react==17.0.2
 * VSCode
 * SQLite3
 
