@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
-import UserList from './components/User.js';
+import UserList from './components/User';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 class App extends React.Component {
   constructor(prop) {
     super(prop)
@@ -10,23 +13,6 @@ class App extends React.Component {
       'users': []
     }
   }
-
-  // componentDidMount() {
-  //   const users = [
-  //     {
-  //       "username": "admin",
-  //       "first_name": "иван",
-  //       "last_name": "бубликов",
-  //       "email": "admin@mail.ru"
-  //     },
-
-  //   ]
-  //   this.setState(
-  //     {
-  //       'users': users
-  //     }
-  //   )
-  // }
 
   componentDidMount() {
     axios.get('http://127.0.0.1:8000/api/users')
@@ -41,9 +27,18 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <UserList users={this.state.users} />
+      <div class='wrapper'>
+        <div class='header'>
+          <Header />
+        </div>
+        <div class='main'>
+          <UserList users={this.state.users} />
+        </div>
+        <div class='footer'>
+          <Footer />
+        </div>
       </div>
+
     )
   }
 }
