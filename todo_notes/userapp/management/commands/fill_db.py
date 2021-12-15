@@ -39,7 +39,6 @@ def load_users():
         else:
             _user.pop("superuser")
             user = User.objects.create_user(**_user)
-        # UserSettings.objects.create(user=user)
 
 
 class Command(BaseCommand):
