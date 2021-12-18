@@ -25,6 +25,12 @@ class ProjectModelViewSet(ModelViewSet):
 
 
 class TodoModelViewSet(ModelViewSet):
+    """модель ToDo: доступны все варианты запросов; при удалении меняем is_active"""
+
     queryset = Todo.objects.all()
     serializer_class = TodoModelSerializer
     pagination_class = TodoLimitOffsetPagination
+
+    def perform_destroy(self, instance):
+        instance.is_active = False
+        instance.save()
