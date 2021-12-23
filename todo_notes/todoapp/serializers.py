@@ -22,7 +22,7 @@ class ProjectModelSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class TodoModelSerializer(HyperlinkedModelSerializer):
+class TodoModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = "__all__"
