@@ -1,11 +1,16 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div style={{ backgroundColor: '#303b44', color: '#fff', marginTop: '10px', marginBottom: '5px' }}>
-            <div style={{ display: 'flex', justifyContent: 'left', padding: '10px' }}>
-                <p>Блок меню</p>
-            </div>
+        <div style={{ backgroundColor: '#ccc', color: '#fff', marginTop: '10px', marginBottom: '5px', paddingTop: '5px', paddingBottom: '5px' }}>
+            <nav>
+                <ul>
+                    <li><Link to='/users'>Пользователи</Link></li>
+                    <li><Link to='/projects'>Проекты</Link></li>
+                    <li><Link to='/todo'>Заметки</Link></li>
+                </ul>
+            </nav>
         </div >
     )
 }
