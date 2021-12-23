@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, BrowserRouter, Route, Routes, Switch, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -31,7 +31,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('http://127.0.0.1:8000/api/users')
       .then(response => {
-        const users = response.data
+        const users = response.data.results
         this.setState(
           {
             'users': users
@@ -41,7 +41,7 @@ class App extends React.Component {
 
     axios.get('http://127.0.0.1:8000/api/projects')
       .then(response => {
-        const projects = response.data
+        const projects = response.data.results
         this.setState(
           {
             'projects': projects
@@ -51,7 +51,7 @@ class App extends React.Component {
 
     axios.get('http://127.0.0.1:8000/api/todo')
       .then(response => {
-        const todos = response.data
+        const todos = response.data.results
         this.setState(
           {
             'todos': todos

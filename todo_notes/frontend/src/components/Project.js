@@ -8,9 +8,6 @@ const ProjectItem = ({ project }) => {
                 <Link to={`/project/${project.id}`}>{project.title}</Link>
 
             </td>
-            {/* <td>
-                {project.title}
-            </td> */}
             <td>
                 {project.repo_link}
             </td>
