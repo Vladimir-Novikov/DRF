@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, BrowserRouter, Route, Routes, Switch, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -13,8 +13,9 @@ import TodoList from './components/Todo';
 
 
 const NotFound = () => {
+  let location = useLocation();
   return (
-    <div>Страница не найдена</div>
+    <div>Страница {location.pathname} не найдена</div>
   )
 }
 
@@ -31,7 +32,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('http://127.0.0.1:8000/api/users')
       .then(response => {
-        const users = response.data
+        const users = response.data.results
         this.setState(
           {
             'users': users
@@ -41,7 +42,7 @@ class App extends React.Component {
 
     axios.get('http://127.0.0.1:8000/api/projects')
       .then(response => {
-        const projects = response.data
+        const projects = response.data.results
         this.setState(
           {
             'projects': projects
@@ -51,7 +52,7 @@ class App extends React.Component {
 
     axios.get('http://127.0.0.1:8000/api/todo')
       .then(response => {
-        const todos = response.data
+        const todos = response.data.results
         this.setState(
           {
             'todos': todos
@@ -62,21 +63,11 @@ class App extends React.Component {
   render() {
     return (
       <div class='wrapper'>
-        {/* <div class='header'>
-          <Header />
-        </div> */}
-        <div class='main'>
-          <BrowserRouter>
-            <div style={{ backgroundColor: '#ccc' }}>
-              <nav>
-                <ul>
-                  <li><Link to='/users'>Пользователи</Link></li>
-                  <li><Link to='/projects'>Проекты</Link></li>
-                  <li><Link to='/todo'>Заметки</Link></li>
-                </ul>
-              </nav>
-            </div >
-
+        <BrowserRouter>
+          <div class='header'>
+            <Header />
+          </div>
+          <div class='main'>
             <Routes>
               <Route exact path='/users' element={<UserList users={this.state.users} />} />
               <Route exact path='/projects' element={<ProjectList projects={this.state.projects} />} />
@@ -85,13 +76,12 @@ class App extends React.Component {
               <Route path='/project/:id' element={<ProjectTodos todos={this.state.todos} />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </div>
+          </div>
+        </BrowserRouter>
         <div class='footer'>
           <Footer />
         </div>
-      </div>
-
+      </div >
     )
   }
 }
