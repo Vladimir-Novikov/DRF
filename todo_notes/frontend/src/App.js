@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -13,8 +13,9 @@ import TodoList from './components/Todo';
 
 
 const NotFound = () => {
+  let location = useLocation();
   return (
-    <div>Страница не найдена</div>
+    <div>Страница {location.pathname} не найдена</div>
   )
 }
 
