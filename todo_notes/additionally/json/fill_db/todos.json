@@ -1,0 +1,74 @@
+[
+    {
+        "text": "заметка 2",
+        "is_active": true,
+        "project": 5,
+        "user": 6
+    },
+    {
+        "text": "заметка 76 к проекту",
+        "is_active": true,
+        "project": 3,
+        "user": 10
+    },
+    {
+        "text": "Заметка к проекту_51",
+        "is_active": false,
+        "project": 6,
+        "user": 7
+    },
+    {
+        "text": "Заметка №3 к проекту_51",
+        "is_active": true,
+        "project": 6,
+        "user": 9
+    },
+    {
+        "text": "Тест",
+        "is_active": true,
+        "project": 3,
+        "user": 5
+    },
+    {
+        "text": "Наработки",
+        "is_active": true,
+        "project": 5,
+        "user": 2
+    },
+    {
+        "text": "Мои идеи",
+        "is_active": true,
+        "project": 7,
+        "user": 5
+    },
+    {
+        "text": "Новые идеи",
+        "is_active": true,
+        "project": 2,
+        "user": 9
+    },
+    {
+        "text": "черновики",
+        "is_active": false,
+        "project": 4,
+        "user": 10
+    },
+    {
+        "text": "черновик",
+        "is_active": true,
+        "project": 3,
+        "user": 3
+    },
+    {
+        "text": "заметка № 674",
+        "is_active": true,
+        "project": 3,
+        "user": 8
+    },
+    {
+        "text": "заметка № 6",
+        "is_active": false,
+        "project": 6,
+        "user": 3
+    }
+]

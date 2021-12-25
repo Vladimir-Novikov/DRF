@@ -60,5 +60,32 @@
     "email": "buble@nnygb.list",
     "password": "django",
     "is_active": true
+  },
+  {
+    "superuser": false,
+    "username": "kohkin",
+    "first_name": "василий",
+    "last_name": "кинов",
+    "email": "koh@nb.com",
+    "password": "django",
+    "is_active": false
+  },
+  {
+    "superuser": false,
+    "username": "mark",
+    "first_name": "mark",
+    "last_name": "hotkin",
+    "email": "marik@fb.com",
+    "password": "django",
+    "is_active": false
+  },
+  {
+    "superuser": false,
+    "username": "djondow",
+    "first_name": "Джон",
+    "last_name": "Доу",
+    "email": "jhon@nnygb.list",
+    "password": "django",
+    "is_active": true
   }
 ]
