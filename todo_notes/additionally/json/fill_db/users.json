@@ -41,7 +41,7 @@
     "last_name": "васечкин",
     "email": "vasil@nb.com",
     "password": "django",
-    "is_active": false
+    "is_active": true
   },
   {
     "superuser": false,
@@ -54,9 +54,9 @@
   },
   {
     "superuser": false,
-    "username": "bublikov",
-    "first_name": "иван",
-    "last_name": "бубликов",
+    "username": "bubl",
+    "first_name": "андрей",
+    "last_name": "бубин",
     "email": "buble@nnygb.list",
     "password": "django",
     "is_active": true
@@ -68,7 +68,7 @@
     "last_name": "кинов",
     "email": "koh@nb.com",
     "password": "django",
-    "is_active": false
+    "is_active": true
   },
   {
     "superuser": false,
@@ -77,7 +77,7 @@
     "last_name": "hotkin",
     "email": "marik@fb.com",
     "password": "django",
-    "is_active": false
+    "is_active": true
   },
   {
     "superuser": false,
