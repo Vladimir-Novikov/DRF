@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from .models import User
 from todoapp.models import Project, Todo
 
-admin.site.register(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Project)
 admin.site.register(Todo)
