@@ -9,6 +9,7 @@ const Header = () => {
                     <li><Link to='/users'>Пользователи</Link></li>
                     <li><Link to='/projects'>Проекты</Link></li>
                     <li><Link to='/todo'>Заметки</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
                 </ul>
             </nav>
         </div >
