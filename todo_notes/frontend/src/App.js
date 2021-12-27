@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -35,13 +35,19 @@ class App extends React.Component {
     axios.post('http://127.0.0.1:8000/api-token-auth/', { 'username': login, 'password': password })
       .then(response => {
         const token = response.data.token
-        console.log(token)
         localStorage.setItem('token', token)
         this.setState({
           'token': token
         }, this.get_data)
       })
       .catch(error => console.log(error))
+  }
+
+  logout() {
+    localStorage.setItem('token', '')
+    this.setState({
+      'token': ''
+    }, this.get_data)
   }
 
   componentDidMount() {
@@ -74,7 +80,13 @@ class App extends React.Component {
             'users': users
           }
         )
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        console.log(error)
+        this.setState({
+          'users': []
+        })
+      })
+
 
     axios.get('http://127.0.0.1:8000/api/projects/', { headers })
       .then(response => {
@@ -84,7 +96,12 @@ class App extends React.Component {
             'projects': projects
           }
         )
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        console.log(error)
+        this.setState({
+          'projects': []
+        })
+      })
 
     axios.get('http://127.0.0.1:8000/api/todo/', { headers })
       .then(response => {
@@ -94,14 +111,23 @@ class App extends React.Component {
             'todos': todos
           }
         )
-      }).catch(error => console.log(error))
+      }).catch(error => {
+        console.log(error)
+        this.setState({
+          'todos': []
+        })
+      })
   }
   render() {
     return (
       <div class='wrapper'>
         <BrowserRouter>
-          <div class='header'>
+          <div class='header' style={{ backgroundColor: '#ccc', color: '#fff', marginTop: '10px', marginBottom: '5px', paddingTop: '5px', paddingBottom: '5px' }}>
             <Header />
+            <div>
+              {this.is_auth() ? <button onClick={() => this.logout()}> Logout </button> : <Link to='/login'>Login</Link>}
+            </div>
+
           </div>
           <div class='main'>
             <Routes>
@@ -114,7 +140,7 @@ class App extends React.Component {
               <Route path='*' element={<NotFound />} />
             </Routes>
           </div>
-        </BrowserRouter>
+        </BrowserRouter >
         <div class='footer'>
           <Footer />
         </div>
