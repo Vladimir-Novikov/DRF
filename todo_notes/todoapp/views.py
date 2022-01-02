@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import LimitOffsetPagination
 from .models import Project, Todo
-from .serializers import TodoModelSerializer, ProjectModelSerializer
+from .serializers import TodoModelSerializer, ProjectModelSerializer, ProjectSerializer
 from .filters import ProjectFilter, TodoFilter
 
 
@@ -21,9 +21,16 @@ class TodoLimitOffsetPagination(LimitOffsetPagination):
 
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
-    serializer_class = ProjectModelSerializer
+    # serializer_class = ProjectModelSerializer
+    serializer_class = ProjectSerializer
     pagination_class = ProjectLimitOffsetPagination
     filterset_class = ProjectFilter
+
+    def get_serializer_class(self):
+        # если get получаем полную информацию о юзере, либо только его ID при POST PUT и тд.
+        if self.request.method in ["GET"]:
+            return ProjectSerializer
+        return ProjectModelSerializer
 
 
 class TodoModelViewSet(ModelViewSet):

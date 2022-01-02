@@ -9,7 +9,9 @@ from rest_framework.viewsets import GenericViewSet
 class UserModelViewSet(UpdateModelMixin, RetrieveModelMixin, ListModelMixin, GenericViewSet):
     """модель User: есть возможность просмотра списка и каждого пользователя в
     отдельности, можно вносить изменения, нельзя удалять и создавать;
+    настройка сортировки см https://stackoverflow.com/questions/44033670/python-django-rest-framework-unorderedobjectlistwarning/44036414
     """
 
-    queryset = User.objects.all()
+    # queryset = User.objects.all()
+    queryset = User.objects.get_queryset().order_by("id")
     serializer_class = UserModelSerializer

@@ -26,3 +26,11 @@ class TodoModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = "__all__"
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+    users = UserModelSerializer(many=True)
+
+    class Meta:
+        model = Project
+        fields = "__all__"
