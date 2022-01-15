@@ -23,6 +23,23 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework.permissions import AllowAny
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Todo_notes",
+        default_version="v1",
+        description="Документация к проекту",
+        contact=openapi.Contact(email="admin@admin.local"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=[AllowAny],
+)
+...
 
 
 router = DefaultRouter()
@@ -40,4 +57,7 @@ urlpatterns = [
     # re_path(r"^api/(?P<version>v\d)/users/$", UserModelViewSet.as_view({"get": "list"})),
     # path("api/v1/users/", include("userapp.urls", namespace="v1")),
     # path("api/v2/users/", include("userapp.urls", namespace="v2")),
+    re_path(r"^swagger(?P<format>\.json|\.yaml)$", schema_view.without_ui(cache_timeout=0), name="schema-json"),
+    path("swagger/", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
 ]
