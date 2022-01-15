@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .models import User
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserSerializerVersionTwo
 from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, ListModelMixin
 from rest_framework.viewsets import GenericViewSet
 
@@ -15,3 +15,8 @@ class UserModelViewSet(UpdateModelMixin, RetrieveModelMixin, ListModelMixin, Gen
     # queryset = User.objects.all()
     queryset = User.objects.get_queryset().order_by("id")
     serializer_class = UserModelSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == "v2":
+            return UserSerializerVersionTwo
+        return UserModelSerializer
