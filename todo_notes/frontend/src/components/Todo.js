@@ -1,8 +1,11 @@
 import React from "react"
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, delete_todo }) => {
     return (
         <tr>
+            <td>
+                <input type="checkbox" checked={todo.is_active} />
+            </td>
             <td>
                 {todo.project}
             </td>
@@ -12,16 +15,24 @@ const TodoItem = ({ todo }) => {
             <td>
                 {todo.user}
             </td>
+
             <td>
                 {todo.created_at}
+            </td>
+            <td>
+                {todo.is_active ? <button onClick={() => delete_todo(todo.id)} type='button'>Пометить заметку как 'выполнена'</button> : <div>Сделано</div>}
+                {/* <button onClick={() => delete_todo(todo.id)} type='button'>Пометить заметку как 'выполнена'</button> */}
             </td>
         </tr>
     )
 }
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, delete_todo }) => {
     return (
         <table>
+            <th>
+                Активна
+            </th>
             <th>
                 Проект ID
             </th>
@@ -34,7 +45,8 @@ const TodoList = ({ todos }) => {
             <th>
                 Создана
             </th>
-            {todos.map((todo) => <TodoItem todo={todo} />)}
+            <th></th>
+            {todos.map((todo) => < TodoItem todo={todo} delete_todo={delete_todo} />)}
         </table>
     )
 }
