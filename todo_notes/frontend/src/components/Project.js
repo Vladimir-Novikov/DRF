@@ -1,12 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const ProjectItem = ({ project }) => {
+
+const ProjectItem = ({ project, delete_project }) => {
     return (
-        <tr>
+        < tr >
             <td>
                 <Link to={`/project/${project.id}`}>{project.title}</Link>
-
             </td>
             <td>
                 {project.repo_link}
@@ -14,24 +14,31 @@ const ProjectItem = ({ project }) => {
             <td>
                 {project.users}
             </td>
-        </tr>
+            <td><button onClick={() => delete_project(project.id)} type='button'>Удалить проект</button></td>
+        </tr >
     )
 }
 
-const ProjectList = ({ projects }) => {
+
+
+const ProjectList = ({ projects, delete_project }) => {
+
     return (
-        <table>
-            <th>
-                Название
-            </th>
-            <th>
-                Ссылка
-            </th>
-            <th>
-                Пользователи
-            </th>
-            {projects.map((project) => <ProjectItem project={project} />)}
-        </table>
+        <div>
+            <table>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Ссылка
+                </th>
+                <th>
+                    Пользователи
+                </th>
+                <th></th>
+                {projects.map((project) => <ProjectItem project={project} delete_project={delete_project} />)}
+            </table>
+        </div>
     )
 }
 

@@ -21,22 +21,26 @@ class TodoLimitOffsetPagination(LimitOffsetPagination):
 
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
-    # serializer_class = ProjectModelSerializer
-    serializer_class = ProjectSerializer
+    serializer_class = ProjectModelSerializer
+    # serializer_class = ProjectSerializer
     pagination_class = ProjectLimitOffsetPagination
     filterset_class = ProjectFilter
 
-    def get_serializer_class(self):
-        # если get получаем полную информацию о юзере, либо только его ID при POST PUT и тд.
-        if self.request.method in ["GET"]:
-            return ProjectSerializer
-        return ProjectModelSerializer
+    # def get_serializer_class(self):
+    #     # если get получаем полную информацию о юзере, либо только его ID при POST PUT и тд.
+    #     if self.request.method in ["GET"]:
+    #         return ProjectSerializer
+    #     return ProjectModelSerializer
 
 
 class TodoModelViewSet(ModelViewSet):
     """модель ToDo: доступны все варианты запросов; при удалении меняем is_active"""
 
-    queryset = Todo.objects.all()
+    # queryset = Todo.objects.all()
+
+    # queryset = Todo.objects.filter(is_active=True)   # показ только активных заметок
+
+    queryset = Todo.objects.get_queryset().order_by("-is_active")  # показываем все заметки - сверху активные
     serializer_class = TodoModelSerializer
     pagination_class = TodoLimitOffsetPagination
     filterset_class = TodoFilter
