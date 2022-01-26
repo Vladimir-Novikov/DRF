@@ -5,6 +5,8 @@ from sys import platform
 
 import sqlite3
 
+# import psycopg2
+
 from django.conf import settings
 from django.core.management import BaseCommand
 
@@ -106,6 +108,8 @@ def fill_permissions_tables():
     ]
 
     user_groups = [(1, 7, 3), (2, 3, 3), (3, 6, 3), (4, 10, 2), (5, 4, 2), (6, 5, 2), (7, 2, 1)]
+
+    # conn = psycopg2.connect(dbname="todo_notes", user="vladimir", password="qwerty", host="127.0.0.1", port="54325")
 
     conn = sqlite3.connect("db.sqlite3")
     cursor = conn.cursor()
